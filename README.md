@@ -1,10 +1,10 @@
 # Python Simple Rat
 
-**You Just Need Python 3**
+**You Just Need Python 3 (3.7.4)**
 
-**It has two properties : Take screenshot, Upload file and execute it**
+**It Has Two Properties : Take Screenshot, Upload File And Execute it**
 
-**Watch this video : https://youtu.be/lMz25TGzKPQ**
+**Watch This Video : https://youtu.be/lMz25TGzKPQ**
 
-***Also you can compile client.py to exe file : https://youtu.be/OZSZHmWSOeM***
+***Also You Can Compile Client.py To Exe File : https://youtu.be/OZSZHmWSOeM***
 
