@@ -1,12 +1,10 @@
 # Python Simple Rat
 
-------
-
 **You Just Need Python 3 (3.7.4)**
 
 **It Has Two Properties : Take Screenshot, Upload File And Execute it**
 
-------
+======
 
 **Watch This Video : https://youtu.be/lMz25TGzKPQ**
 
