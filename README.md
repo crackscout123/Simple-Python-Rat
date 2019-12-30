@@ -9,9 +9,3 @@ Watch This Video : https://youtu.be/lMz25TGzKPQ
 
 Also You Can Compile Client.py To Exe File : https://youtu.be/OZSZHmWSOeM
 ```
-
-```
-If Server.py Suspended For a Mistake Just Restart It
-
-If you have suggestions , Contant me : AhmedViruso@hotmail.com
-```
