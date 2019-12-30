@@ -1,6 +1,6 @@
 # Python Simple Rat
 
-** It has two properties : Take screenshot, Upload file and execute it**
+** It has two properties : Take screenshot, Upload file and execute it **
 
 ** Watch this video : https://youtu.be/lMz25TGzKPQ **
 
