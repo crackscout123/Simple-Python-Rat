@@ -102,8 +102,8 @@ def SendOrders(Con):
                 Recv = Con.recv(1024)
 
                 Recv = Recv.decode("utf-8")
-		
-		Up = input(" - File Path -> ")
+
+                Up = input(" - File Path -> ")
 
                 if(Recv == "file"):
 
