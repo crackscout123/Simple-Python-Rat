@@ -15,7 +15,7 @@ def Create(): # Create Tcp Socket
 
     try:
         
-        Ip = '127.0.0.1' # You Can use socket.gethostbyname( Hostname[noip] )
+        Ip = '127.0.0.1'
         Port = 519
 
         S = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
