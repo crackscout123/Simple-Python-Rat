@@ -74,9 +74,9 @@ def SendOrders(Con):
                     Check = len(Data)
                     print(" - " + str(len(Data)))
                     if(1024 != Check): # If 1024 > length (Data) , Stop Loop
-			    F.close() # Close File
-			    print(" - Done")
-			    break
+                        F.close() # Close File
+                        print(" - Done")
+                        break
 
             except:
                 print(" - Error 1 , Something Is Wrong")
