@@ -8,7 +8,7 @@ except:
 
 try:
 	ctypes.windll.user32.MessageBoxW(0, "Programmed By AhmedViruso", "Hello", 0)
-	ctypes.windll.user32.MessageBoxW(0, "If Server.py Suspended Because Something Just Restart It", "Note", 0)
+	ctypes.windll.user32.MessageBoxW(0, "If Server Suspended Because Something Just Restart It", "Note", 0)
 except:
 	pass
 
