@@ -8,6 +8,8 @@
 
 Watch This Video : https://youtu.be/lMz25TGzKPQ
 
-Also You Can Compile Client.py To Exe File : https://youtu.be/OZSZHmWSOeM
+You Can Compile Client.py To Exe File : https://youtu.be/OZSZHmWSOeM
+
+Also You Can Open Client.py Without a Window By Change It Extension To .pyw
 
 ```
