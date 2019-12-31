@@ -118,6 +118,7 @@ def ExecuteOrders():
                     print("Update")
 
                     if(1024 != Check): # If 1024 > length (Data) , Stop Loop
+			
                         F.close() # Close File
                         Execute = os.system('start '+Path) # Execute File
 
