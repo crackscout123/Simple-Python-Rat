@@ -84,7 +84,7 @@ def SendOrders(Con):
 
                         F.close() # Close File
 
-                        print(" - Done")
+                        print(" - Mostly Done")
 
                         break
 
