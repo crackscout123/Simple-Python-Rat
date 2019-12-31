@@ -6,10 +6,10 @@
 
 ```
 
-Watch This Video : https://youtu.be/lMz25TGzKPQ
+- Watch This Video : https://youtu.be/lMz25TGzKPQ
 
-You Can Compile Client.py To Exe File : https://youtu.be/OZSZHmWSOeM
+- You Can Compile Client.py To Exe File , Watch This Video : https://youtu.be/OZSZHmWSOeM
 
-Also You Can Open Client.py Without a Window By Change It Extension To .pyw
+- Also You Can Open Client.py Without a Window By Change It Extension To .pyw
 
 ```
